@@ -43,7 +43,7 @@
 
   <context:annotation-config />
 
-  <bean class="org.camunda.bpm.getstarted.loanapproval.Starter" />
-  <bean id="calculateInterestService" class="org.camunda.bpm.getstarted.loanapproval.CalculateInterestService" />
+  <bean class="de.frena.helloworld.main.Starter" />
+  <bean id="calculateInterestService" class="de.frena.helloworld.main.CalculateInterestService" />
 
 </beans>

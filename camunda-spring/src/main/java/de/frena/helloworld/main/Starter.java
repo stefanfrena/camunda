@@ -10,20 +10,24 @@
  * the License.
  */
 
-package org.camunda.bpm.getstarted.loanapproval;
+package de.frena.helloworld.main;
 
-import org.camunda.bpm.engine.delegate.DelegateExecution;
-import org.camunda.bpm.engine.delegate.JavaDelegate;
-import org.springframework.stereotype.Service;
+import org.camunda.bpm.engine.RuntimeService;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 
-@Service
-public class CalculateInterestService implements JavaDelegate {
+public class Starter implements InitializingBean {
 
-  public void execute(DelegateExecution delegate) throws Exception {
+  @Autowired
+  private RuntimeService runtimeService;
 
-    System.out.println(
-        "\n\n------------------------------\n\nSpring Bean invoked\n\n------------------------------\n\n");
+  public void afterPropertiesSet() throws Exception {
+    runtimeService.startProcessInstanceByKey("loanApproval");
+  }
 
+  public void setRuntimeService(RuntimeService runtimeService) {
+    this.runtimeService = runtimeService;
   }
 
 }
+
