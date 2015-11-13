@@ -42,8 +42,8 @@
   <bean id="managementService" factory-bean="processEngine" factory-method="getManagementService" />
 
   <context:annotation-config />
-
-  <bean class="de.frena.helloworld.main.Starter" />
-  <bean id="calculateInterestService" class="de.frena.helloworld.main.CalculateInterestService" />
+  
+  <context:component-scan base-package="de.frena" />
+  <!-- http://www.mkyong.com/spring/spring-auto-scanning-components/ -->
 
 </beans>
