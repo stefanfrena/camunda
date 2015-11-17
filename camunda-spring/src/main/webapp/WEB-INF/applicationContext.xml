@@ -8,9 +8,8 @@
 	http://www.springframework.org/schema/mvc 
 	http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 
-
-
-
+	<!-- http://www.springbyexample.org/examples/simple-spring-mvc-form-annotation-config-webapp-spring-config.html -->
+	<mvc:annotation-driven />
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy">
@@ -25,7 +24,6 @@
 		</property>
 	</bean>
 
-	<mvc:annotation-driven />
 
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
