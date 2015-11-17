@@ -9,8 +9,7 @@ public class CalculateInterestService implements JavaDelegate {
 
   public void execute(DelegateExecution delegate) throws Exception {
 
-    System.out.println(
-        "\n\n------------------------------\n\nService started - Delegate started\n\n------------------------------\n\n");
+    System.out.println("Service started - Delegate started");
 
   }
 

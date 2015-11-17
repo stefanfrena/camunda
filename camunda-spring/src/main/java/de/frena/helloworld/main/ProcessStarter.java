@@ -13,23 +13,17 @@
 package de.frena.helloworld.main;
 
 import org.camunda.bpm.engine.RuntimeService;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Starter implements InitializingBean {
+public class ProcessStarter {
 
   @Autowired
   private RuntimeService runtimeService;
 
-  public void afterPropertiesSet() throws Exception {
-    runtimeService.startProcessInstanceByKey("loanApproval");
-  }
-
-  public void start(String name) {
-
-    runtimeService.startProcessInstanceByKey("loanApproval");
+  public void startProcessById(String processId) {
+    runtimeService.startProcessInstanceByKey(processId);
 
   }
 

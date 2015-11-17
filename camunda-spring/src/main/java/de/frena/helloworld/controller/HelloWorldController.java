@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import de.frena.helloworld.dto.HelloWorldDto;
-import de.frena.helloworld.main.Starter;
+import de.frena.helloworld.main.ProcessStarter;
 
 @Controller
 @RequestMapping(value = HelloWorldController.PATH)
@@ -22,7 +22,7 @@ public class HelloWorldController {
 
 
   @Autowired
-  private Starter starter;
+  private ProcessStarter processStarter;
 
   @ResponseBody
   @RequestMapping(value = JSON, method = RequestMethod.POST,
@@ -36,9 +36,9 @@ public class HelloWorldController {
   @RequestMapping(value = START, method = RequestMethod.POST,
       consumes = MediaType.APPLICATION_JSON_VALUE)
   public String startProcess(@RequestBody HelloWorldDto helloWorldDto) {
-    starter.start(helloWorldDto.getName());
+    processStarter.startProcessById(helloWorldDto.getName());
 
-    return "process started";
+    return helloWorldDto.getName() + " process started";
   }
 
   @ResponseBody
