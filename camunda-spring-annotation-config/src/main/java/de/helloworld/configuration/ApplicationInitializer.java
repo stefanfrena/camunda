@@ -22,15 +22,16 @@ public class ApplicationInitializer implements WebApplicationInitializer {
 
     // Create the 'root' Spring application context
     AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-    ctx.register(SpringConfig.class);
     ctx.register(CamundaConfig.class);
+    ctx.register(SpringConfig.class);
 
     // Manage the lifecycle of the root application context
     servletContext.addListener(new ContextLoaderListener(ctx));
     servletContext.addListener(new RequestContextListener());
 
 
-    DispatcherServlet dispatcherServlet = new DispatcherServlet(ctx);
+    AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
+    DispatcherServlet dispatcherServlet = new DispatcherServlet(appContext);
     ServletRegistration.Dynamic dispatcher =
         servletContext.addServlet("Dispatcher", dispatcherServlet);
     dispatcher.setLoadOnStartup(1);

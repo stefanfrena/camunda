@@ -1,5 +1,7 @@
 package de.helloworld.configuration;
 
+import java.util.logging.Logger;
+
 import org.camunda.bpm.BpmPlatform;
 import org.camunda.bpm.ProcessEngineService;
 import org.camunda.bpm.engine.AuthorizationService;
@@ -10,16 +12,14 @@ import org.camunda.bpm.engine.ProcessEngine;
 import org.camunda.bpm.engine.RepositoryService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
+import org.camunda.bpm.engine.spring.application.SpringServletProcessApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-/**
- * configuration for the camunda powered workflow engine
- * 
- *
- */
 @Configuration
 public class CamundaConfig {
+
+  private static final Logger log = Logger.getLogger(CamundaConfig.class.getName());
 
   /**
    * the shared process engine service configured in the container
@@ -31,16 +31,17 @@ public class CamundaConfig {
     return BpmPlatform.getProcessEngineService();
   }
 
-  // /**
-  // * bootstrap the spring powered process application
-  // *
-  // * @return
-  // */
-  // @Bean
-  // public SpringServletProcessApplication processApplication() {
-  // SpringServletProcessApplication application = new SwopProcessApplication();
-  // return application;
-  // }
+  /**
+   * bootstrap the spring powered process application
+   * 
+   * @return
+   */
+  @Bean
+  public SpringServletProcessApplication processApplication() {
+    log.info("create bean for process application");
+    return new ProcessApplicationBean();
+  }
+
 
   /**
    * the process engine
@@ -55,6 +56,7 @@ public class CamundaConfig {
   // ProcessEngineImpl unregisters and destroys the shared engine. :(
   @Bean(destroyMethod = "toString")
   public ProcessEngine processEngine() throws Exception {
+    log.info("getProcessEngine for destroy");
     return processEngineService().getDefaultProcessEngine();
   }
 
@@ -128,4 +130,5 @@ public class CamundaConfig {
   public AuthorizationService authorizationService() throws Exception {
     return processEngine().getAuthorizationService();
   }
+
 }

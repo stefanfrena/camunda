@@ -7,14 +7,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class Starter {
 
-  private static final String PROCESS_INSTANCE_KEY = "do-nothing";
-
   @Autowired
   private RuntimeService runtimeService;
 
-  public void start(String name) {
-    System.out.println("starting process for name " + name);
-    runtimeService.startProcessInstanceByKey(PROCESS_INSTANCE_KEY);
+  public void start(String processId) {
+    System.out.println("starting process for id " + processId);
+    runtimeService.startProcessInstanceByKey(processId);
   }
 
 }
