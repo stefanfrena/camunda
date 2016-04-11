@@ -20,6 +20,8 @@ public class DuckTest {
   public void testRubberDuck() {
     RubberDuck rubberDuck = new RubberDuck();
     rubberDuck.performFly();
+    rubberDuck.setFlyBehaviour(new FlyWithRocket());
+    rubberDuck.performFly();
     rubberDuck.performQuack();
     rubberDuck.swim();
   }
