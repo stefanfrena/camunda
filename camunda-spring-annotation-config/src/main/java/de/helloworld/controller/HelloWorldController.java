@@ -40,13 +40,8 @@ public class HelloWorldController {
 	@RequestMapping(value = START, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String startProcess(@RequestBody HelloWorldDto helloWorldDto) {
 
-		String businessKey = null;
-		if (null != helloWorldDto.getVersion()) {
-			businessKey = starter.startVersion(helloWorldDto.getName(), helloWorldDto.getVersion());
-		} else {
-			businessKey = starter.start(helloWorldDto.getName());
+		String businessKey = starter.start(helloWorldDto);
 
-		}
 		return "process started with business key " + businessKey;
 	}
 

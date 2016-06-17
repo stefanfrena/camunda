@@ -6,6 +6,8 @@ import org.camunda.bpm.engine.repository.ProcessDefinition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import de.helloworld.dto.HelloWorldDto;
+
 @Service
 public class Starter {
 
@@ -15,25 +17,22 @@ public class Starter {
   @Autowired
   private ProcessEngine processEngine;
 
-  public String start(String processId) {
-    System.out.println("starting process for id " + processId);
+  public String start(HelloWorldDto dto) {
+    System.out.println("starting process for id " + dto.getName());
     String randomBusinessKey = createBusinessKey();
-	runtimeService.startProcessInstanceByKey(processId,randomBusinessKey);
+    
+    if(null == dto.getVersion()){
+    	runtimeService.startProcessInstanceByKey(dto.getName(),randomBusinessKey);
+    }
+    else{
+    	 ProcessDefinition pd = processEngine.getRepositoryService().createProcessDefinitionQuery()
+ 			    .processDefinitionKey(dto.getName())
+ 			    .processDefinitionVersion(dto.getVersion()).singleResult();
+ 			processEngine.getRuntimeService().startProcessInstanceById(pd.getId(), randomBusinessKey);
+    }
 	return randomBusinessKey;
   }
 
-  public String startVersion(String processId, Integer version) {
-	  System.out.println("starting process for id " + processId +" in Version "+version);
-	  String randomBusinessKey = createBusinessKey();
-	  
-	  ProcessDefinition pd = processEngine.getRepositoryService().createProcessDefinitionQuery()
-			    .processDefinitionKey(processId)
-			    .processDefinitionVersion(version).singleResult();
-			processEngine.getRuntimeService().startProcessInstanceById(pd.getId(), randomBusinessKey);
-	  
-	  runtimeService.startProcessInstanceByKey(processId,randomBusinessKey);
-	  return randomBusinessKey;
-  }
 
 private String createBusinessKey() {
 	Double rand = Math.random() * 1000;
