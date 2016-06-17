@@ -15,16 +15,29 @@ public class HelloWorldDto implements Serializable {
     return name;
   }
 
-  public static long getSerialversionuid() {
-    return serialVersionUID;
+  @JsonProperty("version")
+  private Integer version;
+  
+  public Integer getVersion() {
+	  return version;
+  }
+
+  public void setVersion(Integer version) {
+	  this.version = version;
   }
 
   public void setName(String name) {
-    this.name = name;
+	  this.name = name;
+  }
+  
+  public static long getSerialversionuid() {
+	  return serialVersionUID;
   }
 
-  @Override
-  public String toString() {
-    return "HelloWorldDto [name=" + name + "]";
-  }
+@Override
+public String toString() {
+	return "HelloWorldDto [name=" + name + ", version=" + version + "]";
+}
+
+  
 }
