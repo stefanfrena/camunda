@@ -15,6 +15,7 @@ public class NextConnectionUtil {
       NextConnection origin) {
 
     switch (origin) {
+
       case FORWARDS:
         return nextConnection; // if forward next connection has not to be recalculated
 
@@ -22,6 +23,8 @@ public class NextConnectionUtil {
         switch (nextConnection) {
           case FORWARDS:
             return BACKWARDS;
+          case BACKWARDS:
+            return FORWARDS;
           case LEFT:
             return RIGHT;
           case RIGHT:
@@ -30,24 +33,24 @@ public class NextConnectionUtil {
             return TOP;
           case BOTTOM:
             return BOTTOM;
-          default:
-            break;
         }
 
       case BOTTOM:
         switch (nextConnection) {
           case FORWARDS:
             return BOTTOM;
+          case BACKWARDS:
+            return TOP;
           case LEFT:
-            return FORWARDS;
-          case RIGHT:
-            return BACKWARDS;
-          case TOP:
-            return RIGHT;
-          case BOTTOM:
             return LEFT;
-          default:
-            break;
+          case RIGHT:
+            return RIGHT;
+          case TOP:
+            return FORWARDS;
+          case BOTTOM:
+            return BACKWARDS;
+
+
         }
 
       case LEFT:
@@ -62,8 +65,10 @@ public class NextConnectionUtil {
             return TOP;
           case BOTTOM:
             return BOTTOM;
-          default:
-            break;
+          case BACKWARDS:
+            return RIGHT;
+
+
         }
 
       case RIGHT:
@@ -78,13 +83,16 @@ public class NextConnectionUtil {
             return TOP;
           case BOTTOM:
             return BOTTOM;
-          default:
-            break;
+          case BACKWARDS:
+            return LEFT;
+
         }
       case TOP:
         switch (nextConnection) {
           case FORWARDS:
             return TOP;
+          case BACKWARDS:
+            return BOTTOM;
           case LEFT:
             return LEFT;
           case RIGHT:
@@ -93,8 +101,6 @@ public class NextConnectionUtil {
             return BACKWARDS;
           case BOTTOM:
             return FORWARDS;
-          default:
-            break;
         }
 
 

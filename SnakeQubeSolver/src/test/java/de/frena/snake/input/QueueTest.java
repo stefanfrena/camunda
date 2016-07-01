@@ -22,7 +22,7 @@ public class QueueTest {
   public void testQueue_maxReturnNull() {
 
     Queue queue = new Queue();
-    for (int i = 0; i < 27; i++) {
+    for (int i = 0; i < queue.length; i++) {
       queue.getNext();
     }
     CellTypes next = queue.getNext();

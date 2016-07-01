@@ -84,13 +84,10 @@ public class SnakeCubeSolver {
       System.out.println("Candidates: " + possibleCubes.size());
 
     }
-
     for (Cube resultCube : possibleCubes) {
-      System.out.println("----------------------\n Solution [" + resultCube.toString()
-          + "] \n----------------------");
-
+      System.out.println("");
       for (NextConnection nextConnection : resultCube.getSolvedConnections()) {
-        System.out.println(nextConnection.name());
+        System.out.print(nextConnection.name() + "-");
       }
 
 
