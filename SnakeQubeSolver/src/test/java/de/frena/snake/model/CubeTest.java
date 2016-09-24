@@ -18,8 +18,8 @@ public class CubeTest {
 
   @Test
   public void test_checkBoundaries() {
-    Cube cube = new Cube(3, new Coordinates(1, 1, 1));
-    List<CellTypes> list = getList();
+    new Cube(3, new Coordinates(1, 1, 1));
+    getList();
 
 
 
