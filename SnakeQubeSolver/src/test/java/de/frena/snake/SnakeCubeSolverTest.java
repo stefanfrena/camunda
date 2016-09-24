@@ -6,8 +6,7 @@ public class SnakeCubeSolverTest {
 
   @Test
   public void test() throws Exception {
-    SnakeCubeSolver cubeSolver = new SnakeCubeSolver();
-    cubeSolver.solve();
+    new SnakeCubeSolver().solve();
   }
 
 
