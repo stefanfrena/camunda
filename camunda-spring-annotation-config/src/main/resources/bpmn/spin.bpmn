@@ -8,30 +8,35 @@
       <bpmn:documentation><![CDATA[json = {"customer": "Kermit"}]]></bpmn:documentation>
       <bpmn:outgoing>SequenceFlow_0sazdk1</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:endEvent id="EndEvent_0q3ety3">
-      <bpmn:incoming>SequenceFlow_0gtj1j2</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:serviceTask id="Task_0pq2nai" name="call delegate" camunda:asyncBefore="true" camunda:asyncAfter="true" camunda:delegateExpression="${mySpinDelegate}">
       <bpmn:incoming>SequenceFlow_0sazdk1</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0gtj1j2</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_0sazdk1" sourceRef="StartEvent_1" targetRef="Task_0pq2nai" />
-    <bpmn:sequenceFlow id="SequenceFlow_0gtj1j2" sourceRef="Task_0pq2nai" targetRef="EndEvent_0q3ety3" />
-    <bpmn:textAnnotation id="TextAnnotation_0gofzat">    <bpmn:text><![CDATA[delegate reads json using spin
-
-]]></bpmn:text>
-</bpmn:textAnnotation>
+    <bpmn:sequenceFlow id="SequenceFlow_0gtj1j2" sourceRef="Task_0pq2nai" targetRef="Task_0yzz4ho" />
+    <bpmn:endEvent id="EndEvent_0q3ety3">
+      <bpmn:incoming>SequenceFlow_19u4mu3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_19u4mu3" sourceRef="Task_0yzz4ho" targetRef="EndEvent_0q3ety3" />
+    <bpmn:serviceTask id="Task_0yzz4ho" name="load personDto form json" camunda:asyncBefore="true" camunda:delegateExpression="${personDelegate}">
+      <bpmn:incoming>SequenceFlow_0gtj1j2</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_19u4mu3</bpmn:outgoing>
+    </bpmn:serviceTask>
     <bpmn:association id="Association_0pueb4k" sourceRef="Task_0pq2nai" targetRef="TextAnnotation_0gofzat" />
     <bpmn:textAnnotation id="TextAnnotation_0p024gn">
       <bpmn:documentation><![CDATA[{"customer": "Kermit"}]]></bpmn:documentation>
       <bpmn:text><![CDATA[set var 'json' at start]]></bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:association id="Association_0kmb2gv" sourceRef="StartEvent_1" targetRef="TextAnnotation_0p024gn" />
+    <bpmn:textAnnotation id="TextAnnotation_0gofzat">    <bpmn:text><![CDATA[delegate reads json using spin
+
+]]></bpmn:text>
+</bpmn:textAnnotation>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_04lpike">
       <bpmndi:BPMNShape id="Participant_02m4aww_di" bpmnElement="Participant_02m4aww">
-        <dc:Bounds x="-18" y="-26" width="659" height="266" />
+        <dc:Bounds x="-18" y="-26" width="920" height="266" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="91" y="79" width="36" height="36" />
@@ -47,27 +52,27 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_0q3ety3_di" bpmnElement="EndEvent_0q3ety3">
-        <dc:Bounds x="407.5489021956088" y="79" width="36" height="36" />
+        <dc:Bounds x="668.5489021956088" y="79" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="426" y="115" width="0" height="0" />
+          <dc:Bounds x="687" y="115" width="0" height="0" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0gtj1j2_di" bpmnElement="SequenceFlow_0gtj1j2">
         <di:waypoint xsi:type="dc:Point" x="315" y="97" />
-        <di:waypoint xsi:type="dc:Point" x="408" y="97" />
+        <di:waypoint xsi:type="dc:Point" x="437" y="97" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="362" y="82" width="0" height="0" />
+          <dc:Bounds x="376" y="82" width="0" height="0" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_1gr6r4y_di" bpmnElement="Task_0pq2nai">
         <dc:Bounds x="215" y="57" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_0gofzat_di" bpmnElement="TextAnnotation_0gofzat">
-        <dc:Bounds x="347.3872255489022" y="174.67864271457086" width="100" height="30" />
+        <dc:Bounds x="179" y="174" width="179" height="38" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_0pueb4k_di" bpmnElement="Association_0pueb4k">
-        <di:waypoint xsi:type="dc:Point" x="312" y="130" />
-        <di:waypoint xsi:type="dc:Point" x="375" y="175" />
+        <di:waypoint xsi:type="dc:Point" x="266" y="137" />
+        <di:waypoint xsi:type="dc:Point" x="267" y="174" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_0p024gn_di" bpmnElement="TextAnnotation_0p024gn">
         <dc:Bounds x="93.38722554890222" y="0.6786427145708558" width="100" height="30" />
@@ -76,6 +81,16 @@
         <di:waypoint xsi:type="dc:Point" x="116" y="81" />
         <di:waypoint xsi:type="dc:Point" x="137" y="31" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_19u4mu3_di" bpmnElement="SequenceFlow_19u4mu3">
+        <di:waypoint xsi:type="dc:Point" x="537" y="97" />
+        <di:waypoint xsi:type="dc:Point" x="669" y="97" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="603" y="82" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_16okcov_di" bpmnElement="Task_0yzz4ho">
+        <dc:Bounds x="437" y="57" width="100" height="80" />
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

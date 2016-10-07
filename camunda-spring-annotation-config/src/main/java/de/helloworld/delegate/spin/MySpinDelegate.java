@@ -1,4 +1,4 @@
-package de.helloworld.delegate;
+package de.helloworld.delegate.spin;
 
 import static org.camunda.spin.Spin.JSON;
 
