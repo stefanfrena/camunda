@@ -21,6 +21,10 @@ dependencies {
   compile 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
   
   compile 'org.camunda.bpm:camunda-engine-spring:7.5.0'
+
+  providedCompile 'org.camunda.spin:camunda-spin-core:1.3.0'
+  providedCompile 'org.camunda.spin:camunda-spin-dataformat-all:1.3.0'
+
   compile 'org.camunda.bpm.extension:camunda-bpm-assert:1.2'
 
   providedCompile 'org.camunda.bpm:camunda-engine:7.5.0'
