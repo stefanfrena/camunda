@@ -13,15 +13,15 @@ public class EdgeTest {
   @Test
   public void test_Edge() {
     Edge edge = new Edge(new Coordinates(1, 1, 1), NextConnection.LEFT);
-    Assert.assertEquals(NextConnection.LEFT, edge.getNextConnection());
+    assertEquals(NextConnection.LEFT, edge.getNextConnection());
   }
 
   @Test
   public void test_Edge_setNextConnection() {
     Edge edge = new Edge(new Coordinates(1, 1, 1), NextConnection.LEFT);
     assertEquals(NextConnection.LEFT, edge.getNextConnection());
-    edge.setNextConnection(NextConnection.LEFT);
-    assertEquals(NextConnection.LEFT, edge.getNextConnection());
+    edge.setNextConnection(NextConnection.RIGHT);
+    assertEquals(NextConnection.RIGHT, edge.getNextConnection());
 
   }
 }

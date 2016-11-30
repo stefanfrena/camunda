@@ -17,21 +17,9 @@ public class CubeTest {
 
 
   @Test
-  public void test_checkBoundaries() {
-    new Cube(3, new Coordinates(1, 1, 1));
-    getList();
-
-
-
-  }
-
-
-
-  @Test
   public void test_initCube() {
     Cube cube = new Cube(3, new Coordinates(1, 1, 1));
     assertTrue(3 == cube.getSideLenght());
-
   }
 
   @Test
@@ -64,8 +52,6 @@ public class CubeTest {
     cube.fillCell(new Straight(new Coordinates(2, 1, 1), FORWARDS));
     Cell cell = cube.getCell(1, 1, 1);
     assertEquals(1, cell.getX());
-    assertEquals(1, cell.getY());
-    assertEquals(1, cell.getZ());
   }
 
   @Test(expected = NullPointerException.class)
@@ -73,9 +59,7 @@ public class CubeTest {
     Cube cube = new Cube(3, new Coordinates(1, 1, 1));
     cube.fillCell(new Straight(new Coordinates(1, 2, 1), FORWARDS));
     Cell cell = cube.getCell(1, 1, 1);
-    assertEquals(1, cell.getX());
     assertEquals(1, cell.getY());
-    assertEquals(1, cell.getZ());
   }
 
   @Test(expected = NullPointerException.class)
@@ -83,8 +67,6 @@ public class CubeTest {
     Cube cube = new Cube(3, new Coordinates(1, 1, 1));
     cube.fillCell(new Straight(new Coordinates(1, 1, 2), FORWARDS));
     Cell cell = cube.getCell(1, 1, 1);
-    assertEquals(1, cell.getX());
-    assertEquals(1, cell.getY());
     assertEquals(1, cell.getZ());
   }
 
@@ -92,30 +74,18 @@ public class CubeTest {
   public void test_wrong_x_bounds() {
     Cube cube = new Cube(3, new Coordinates(1, 1, 1));
     cube.fillCell(new Straight(new Coordinates(4, 1, 1), FORWARDS));
-    Cell cell = cube.getCell(1, 1, 1);
-    assertEquals(1, cell.getX());
-    assertEquals(1, cell.getY());
-    assertEquals(1, cell.getZ());
   }
 
   @Test(expected = IndexOutOfBoundsException.class)
   public void test_wrong_y_bounds() {
     Cube cube = new Cube(3, new Coordinates(1, 1, 1));
     cube.fillCell(new Straight(new Coordinates(1, 4, 1), FORWARDS));
-    Cell cell = cube.getCell(1, 1, 1);
-    assertEquals(1, cell.getX());
-    assertEquals(1, cell.getY());
-    assertEquals(1, cell.getZ());
   }
 
   @Test(expected = IndexOutOfBoundsException.class)
   public void test_wrong_z_bounds() {
     Cube cube = new Cube(3, new Coordinates(1, 1, 1));
     cube.fillCell(new Straight(new Coordinates(0, 1, 4), FORWARDS));
-    Cell cell = cube.getCell(1, 1, 1);
-    assertEquals(1, cell.getX());
-    assertEquals(1, cell.getY());
-    assertEquals(1, cell.getZ());
   }
 
   @Test
@@ -136,8 +106,6 @@ public class CubeTest {
     cube.fillCell(new Edge(new Coordinates(2, 1, 1), NextConnection.BOTTOM));
     Cell cell = cube.getCell(1, 1, 1);
     assertEquals(1, cell.getX());
-    assertEquals(1, cell.getY());
-    assertEquals(1, cell.getZ());
   }
 
   @Test(expected = NullPointerException.class)
@@ -145,9 +113,7 @@ public class CubeTest {
     Cube cube = new Cube(3, new Coordinates(1, 1, 1));
     cube.fillCell(new Edge(new Coordinates(1, 2, 1), NextConnection.BOTTOM));
     Cell cell = cube.getCell(1, 1, 1);
-    assertEquals(1, cell.getX());
     assertEquals(1, cell.getY());
-    assertEquals(1, cell.getZ());
   }
 
   @Test(expected = NullPointerException.class)
@@ -155,8 +121,6 @@ public class CubeTest {
     Cube cube = new Cube(3, new Coordinates(1, 1, 1));
     cube.fillCell(new Edge(new Coordinates(1, 1, 2), NextConnection.BOTTOM));
     Cell cell = cube.getCell(1, 1, 1);
-    assertEquals(1, cell.getX());
-    assertEquals(1, cell.getY());
     assertEquals(1, cell.getZ());
   }
 
@@ -164,30 +128,18 @@ public class CubeTest {
   public void test_edge_wrong_x_bounds() {
     Cube cube = new Cube(3, new Coordinates(1, 1, 1));
     cube.fillCell(new Edge(new Coordinates(4, 1, 1), NextConnection.BOTTOM));
-    Cell cell = cube.getCell(1, 1, 1);
-    assertEquals(1, cell.getX());
-    assertEquals(1, cell.getY());
-    assertEquals(1, cell.getZ());
   }
 
   @Test(expected = IndexOutOfBoundsException.class)
   public void test_edge_wrong_y_bounds() {
     Cube cube = new Cube(3, new Coordinates(1, 1, 1));
     cube.fillCell(new Edge(new Coordinates(1, 4, 1), NextConnection.BOTTOM));
-    Cell cell = cube.getCell(1, 1, 1);
-    assertEquals(1, cell.getX());
-    assertEquals(1, cell.getY());
-    assertEquals(1, cell.getZ());
   }
 
   @Test(expected = IndexOutOfBoundsException.class)
   public void test_edge_wrong_z_bounds() {
     Cube cube = new Cube(3, new Coordinates(1, 1, 1));
     cube.fillCell(new Edge(new Coordinates(0, 1, 4), NextConnection.BOTTOM));
-    Cell cell = cube.getCell(1, 1, 1);
-    assertEquals(1, cell.getX());
-    assertEquals(1, cell.getY());
-    assertEquals(1, cell.getZ());
   }
 
   @Test

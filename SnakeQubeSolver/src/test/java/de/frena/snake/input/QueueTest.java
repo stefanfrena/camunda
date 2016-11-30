@@ -1,6 +1,9 @@
 package de.frena.snake.input;
 
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 import de.frena.snake.enums.CellTypes;
@@ -11,11 +14,11 @@ public class QueueTest {
   public void testQueue() {
 
     Queue queue = new Queue();
-    Assert.assertEquals(CellTypes.STRAIGHT, queue.getNext());
-    Assert.assertEquals(CellTypes.STRAIGHT, queue.getNext());
-    Assert.assertEquals(CellTypes.EDGE, queue.getNext());
-    Assert.assertEquals(CellTypes.EDGE, queue.getNext());
-    Assert.assertEquals(CellTypes.EDGE, queue.getNext());
+    assertEquals(CellTypes.STRAIGHT, queue.getNext());
+    assertEquals(CellTypes.STRAIGHT, queue.getNext());
+    assertEquals(CellTypes.EDGE, queue.getNext());
+    assertEquals(CellTypes.EDGE, queue.getNext());
+    assertEquals(CellTypes.EDGE, queue.getNext());
   }
 
   @Test
@@ -26,17 +29,17 @@ public class QueueTest {
       queue.getNext();
     }
     CellTypes next = queue.getNext();
-    Assert.assertEquals(null, next);
+    assertEquals(null, next);
   }
 
   @Test
   public void testQueue_hasNext() {
     Queue queue = new Queue();
-    Assert.assertTrue(queue.hasNext());
+    assertTrue(queue.hasNext());
     for (int i = 0; i < 27; i++) {
       queue.getNext();
     }
-    Assert.assertFalse(queue.hasNext());
+    assertFalse(queue.hasNext());
 
 
   }
