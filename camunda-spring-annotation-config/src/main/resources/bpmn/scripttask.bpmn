@@ -23,11 +23,9 @@ println "executionid: " + id;]]></camunda:script>
       <bpmn:incoming>SequenceFlow_0pq0nv9</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1joyqoz</bpmn:outgoing>
       <bpmn:script><![CDATA[user = inputUser;
-
-
 execution.setVariable("user", user);]]></bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:userTask id="UserTask" name="do something" camunda:assignee="${user}">
+    <bpmn:userTask id="UserTask" name="do something" camunda:asyncBefore="true" camunda:assignee="${user}">
       <bpmn:extensionElements>
         <camunda:taskListener event="create">
           <camunda:script scriptFormat="groovy"><![CDATA[println task.eventName + " created"]]></camunda:script>
@@ -69,16 +67,22 @@ execution.setVariable('doubledresultVariable', sum)]]></bpmn:script>
     <bpmn:sequenceFlow id="SequenceFlow_1joyqoz" sourceRef="Task_skripttask" targetRef="UserTask" />
     <bpmn:sequenceFlow id="SequenceFlow_1th93u5" sourceRef="UserTask" targetRef="ExclusiveGateway_1vp06te" />
     <bpmn:sequenceFlow id="SequenceFlow_18plvyf" sourceRef="ExclusiveGateway_1vp06te" targetRef="EndEvent_0jyo2cn" />
-    <bpmn:sequenceFlow id="SequenceFlow_1ljfhie" sourceRef="ExclusiveGateway_1ysfs3w" targetRef="Task_0glniwm" />
+    <bpmn:sequenceFlow id="SequenceFlow_1ljfhie" sourceRef="ExclusiveGateway_1ysfs3w" targetRef="Task_0glniwm">
+      <bpmn:extensionElements>
+        <camunda:executionListener event="take">
+          <camunda:script scriptFormat="groovy"><![CDATA[execution.setVariable("varSetInflow", true);]]></camunda:script>
+        </camunda:executionListener>
+      </bpmn:extensionElements>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0lhb75i" sourceRef="Task_0glniwm" targetRef="Task_19tsqk3" />
     <bpmn:sequenceFlow id="SequenceFlow_07ghvif" sourceRef="Task_19tsqk3" targetRef="ExclusiveGateway_1vp06te" />
     <bpmn:association id="Association_0umenkj" sourceRef="Task_19tsqk3" targetRef="TextAnnotation_1nzj578" />
-    <bpmn:textAnnotation id="TextAnnotation_1fgu4k2">    <bpmn:text><![CDATA[use script to set execution id as process var
-
-]]></bpmn:text>
-</bpmn:textAnnotation>
     <bpmn:association id="Association_011vxfh" sourceRef="StartEvent_1" targetRef="TextAnnotation_1fgu4k2" />
     <bpmn:textAnnotation id="TextAnnotation_1nzj578">    <bpmn:text>double resultvar by calling component</bpmn:text>
+</bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_1fgu4k2">    <bpmn:text><![CDATA[use script to set execution id as process var
+
+There is also a script on the FLOW (Kante) going down]]></bpmn:text>
 </bpmn:textAnnotation>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -163,11 +167,11 @@ execution.setVariable('doubledresultVariable', sum)]]></bpmn:script>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_1fgu4k2_di" bpmnElement="TextAnnotation_1fgu4k2">
-        <dc:Bounds x="47" y="132" width="105" height="60" />
+        <dc:Bounds x="45" y="153" width="137" height="92" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_011vxfh_di" bpmnElement="Association_011vxfh">
         <di:waypoint xsi:type="dc:Point" x="77" y="84" />
-        <di:waypoint xsi:type="dc:Point" x="91" y="132" />
+        <di:waypoint xsi:type="dc:Point" x="99" y="153" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0lhb75i_di" bpmnElement="SequenceFlow_0lhb75i">
         <di:waypoint xsi:type="dc:Point" x="352" y="174" />

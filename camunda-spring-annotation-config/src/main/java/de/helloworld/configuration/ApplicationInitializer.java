@@ -16,12 +16,16 @@ public class ApplicationInitializer implements WebApplicationInitializer {
 
   private final static Logger LOG = Logger.getLogger(ApplicationInitializer.class.getName());
 
+  
   @Override
   public void onStartup(ServletContext servletContext) throws ServletException {
     System.out.println("initializing application");
 
     // Create the 'root' Spring application context
     AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
+    ctx.register(PropertyPlaceholderConfigurerConfig.class);
+    ctx.register(DatasourceConfig.class);
+    ctx.register(FlyWayEntityManagerFactory.class);
     ctx.register(CamundaConfig.class);
     ctx.register(SpringConfig.class);
 
@@ -36,6 +40,8 @@ public class ApplicationInitializer implements WebApplicationInitializer {
         servletContext.addServlet("Dispatcher", dispatcherServlet);
     dispatcher.setLoadOnStartup(1);
     dispatcher.addMapping("/");
+
+
 
 
     // http://stackoverflow.com/questions/16707152/spring-mvc-dispatcherservlet-by-annotations
