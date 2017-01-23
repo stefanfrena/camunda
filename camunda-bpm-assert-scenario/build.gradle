@@ -16,6 +16,6 @@ dependencies {
   testCompile 'org.camunda.consulting.snippets:process-test-coverage:0.2.3'
   testCompile 'com.h2database:h2:1.4.180'
 
-  providedCompile 'org.camunda.bpm:camunda-engine:7.5.0'
+  providedCompile 'org.camunda.bpm:camunda-engine:7.3.0'
 
 }

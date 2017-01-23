@@ -9,13 +9,17 @@ import java.util.Map;
 import org.camunda.bpm.consulting.process_test_coverage.ProcessTestCoverage;
 import org.camunda.bpm.engine.test.Deployment;
 import org.camunda.bpm.engine.test.ProcessEngineRule;
+import org.camunda.bpm.engine.test.mock.Mocks;
 import org.camunda.bpm.engine.variable.Variables;
 import org.camunda.bpm.scenario.ProcessScenario;
 import org.camunda.bpm.scenario.Scenario;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+
+import delegate.DelegateToMock;
 
 
 public class AssertScenarioTest {
@@ -27,12 +31,14 @@ public class AssertScenarioTest {
 	private ProcessScenario process;
 	private Scenario scenario;
 
+	 @Mock
+	 private DelegateToMock delegateToMock;
+	 
 	@Before
 	public void setUp() {
+		Mocks.register("delegateToMock", delegateToMock);
 		process = Mockito.mock(ProcessScenario.class);
 		variables = Variables.createVariables().putValue("variable", "");
-		when(process.waitsAtUserTask(Mockito.anyString())).thenReturn((task) -> task.complete());
-		when(process.waitsAtSendTask("SendTask")).thenReturn((sendTask) -> sendTask.complete());
 		
 	}
 
@@ -49,9 +55,13 @@ public class AssertScenarioTest {
 		variables = Variables.createVariables().putValue("variable", "manual");
 		
 		// when
+		
+		when(process.waitsAtUserTask(Mockito.anyString())).thenReturn((task) -> task.complete());
+		
 		when(process.waitsAtUserTask("UserTaskDecide")).thenReturn((task) -> {
-		      task.complete(withVariables("approved", true));
-		    });
+			task.complete(withVariables("approved", true));
+		});
+		
 		scenario = Scenario.run(process).startByKey("camunda-bpm-scenario-testing", variables).execute();
 		
 		// then
@@ -68,11 +78,17 @@ public class AssertScenarioTest {
 		variables = Variables.createVariables().putValue("variable", "manual");
 		
 		// when
+		when(process.waitsAtUserTask(Mockito.anyString())).thenReturn((task) -> task.complete());
+		
 		when(process.waitsAtUserTask("UserTaskDecide")).thenReturn((task) -> {
 			task.complete(withVariables("approved", false));
 		});
+//		when(process.waitsAtServiceTask("Delegate_Task")).thenReturn((task) -> {
+//			task.complete(withVariables("blub", "bla"));
+//		});
+
 		scenario = Scenario.run(process).startByKey("camunda-bpm-scenario-testing", variables).execute();
-		
+				
 		// then
 		Mockito.verify(process).hasFinished("EndEventProcessNotApproved");
 		ProcessTestCoverage.calculate(scenario.instance(process), rule.getProcessEngine());

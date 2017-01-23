@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.3.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://activiti.org/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.3.0">
   <bpmn:process id="camunda-bpm-scenario-testing" name="camunda-bpm-scenario-testing" isExecutable="true">
     <bpmn:startEvent id="EndEventProcessStarted">
       <bpmn:outgoing>SequenceFlow_0cp7r67</bpmn:outgoing>
@@ -41,9 +41,9 @@
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${approved}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:endEvent id="EndEventProcessNotApproved">
-      <bpmn:incoming>SequenceFlow_1o9w1cx</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1pkzbux</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_1o9w1cx" name="no" sourceRef="ExclusiveGateway_0xlik0a" targetRef="EndEventProcessNotApproved">
+    <bpmn:sequenceFlow id="SequenceFlow_1o9w1cx" name="no" sourceRef="ExclusiveGateway_0xlik0a" targetRef="Delegate_Task">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!approved}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sendTask id="SendTask" name="send" camunda:expression="${true}">
@@ -69,6 +69,11 @@
         <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P1DT1M</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1pkzbux" sourceRef="Delegate_Task" targetRef="EndEventProcessNotApproved" />
+    <bpmn:serviceTask id="Delegate_Task" name="delegate" camunda:delegateExpression="${delegateToMock}">
+      <bpmn:incoming>SequenceFlow_1o9w1cx</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1pkzbux</bpmn:outgoing>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmn:message id="Message_1nfufar" name="testMessage" />
   <bpmn:message id="Message_1si5hpj" name="interruptMessage" />
@@ -156,17 +161,17 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_0dp97d4_di" bpmnElement="EndEventProcessNotApproved">
-        <dc:Bounds x="849" y="132" width="36" height="36" />
+        <dc:Bounds x="978" y="135" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="867" y="168" width="0" height="0" />
+          <dc:Bounds x="996" y="171" width="0" height="0" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1o9w1cx_di" bpmnElement="SequenceFlow_1o9w1cx">
         <di:waypoint xsi:type="dc:Point" x="716" y="232" />
-        <di:waypoint xsi:type="dc:Point" x="716" y="150" />
-        <di:waypoint xsi:type="dc:Point" x="849" y="150" />
+        <di:waypoint xsi:type="dc:Point" x="716" y="153" />
+        <di:waypoint xsi:type="dc:Point" x="803" y="153" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="725" y="181" width="12" height="12" />
+          <dc:Bounds x="725" y="182.64634146341461" width="12" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="SendTask_1m01kb8_di" bpmnElement="SendTask">
@@ -218,6 +223,16 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="713" y="440" width="0" height="0" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1pkzbux_di" bpmnElement="SequenceFlow_1pkzbux">
+        <di:waypoint xsi:type="dc:Point" x="903" y="153" />
+        <di:waypoint xsi:type="dc:Point" x="978" y="153" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="941" y="138" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_1phcibz_di" bpmnElement="Delegate_Task">
+        <dc:Bounds x="803" y="113" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
