@@ -31,7 +31,7 @@ public class DatasourceConfig {
 
 	@Bean(name = { "applicationDataSource", "dataSource" })
 	public javax.sql.DataSource applicationDataSource() {
-		System.out.println("initializing datasource " + databaseURL);
+		LOG.info("initializing datasource " + databaseURL);
 		
 		DataSource dataSource = new DataSource();
 		dataSource.setMaxActive(10);

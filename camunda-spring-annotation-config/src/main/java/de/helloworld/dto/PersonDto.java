@@ -8,6 +8,11 @@ public class PersonDto implements Serializable {
 
 	private static final long serialVersionUID = -8821130744182800028L;
 
+	public PersonDto(String firstName, String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
 	@JsonProperty("firstName")
 	private String firstName;
 
