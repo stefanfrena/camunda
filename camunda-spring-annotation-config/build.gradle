@@ -29,7 +29,7 @@ apply plugin: 'war'
 	
 	  compile 'org.camunda.bpm.extension:camunda-bpm-assert:1.2'
 	
-	  providedCompile 'org.camunda.bpm:camunda-engine:7.5.0'
+	  providedCompile 'org.camunda.bpm:camunda-engine:7.6.0'
 	  providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
 	  providedCompile 'org.apache.tomcat:tomcat-jdbc:7.0.19'
 	  
