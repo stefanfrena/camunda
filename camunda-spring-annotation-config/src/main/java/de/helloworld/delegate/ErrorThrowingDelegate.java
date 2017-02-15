@@ -9,21 +9,34 @@ import org.springframework.stereotype.Service;
 
 import de.helloworld.dto.PersonDto;
 
-
-
 @Service
-public class EmptyDelegateForDebugging implements JavaDelegate {
+public class ErrorThrowingDelegate implements JavaDelegate {
 
-	@Autowired
-	private ManagementService managementService;
 	@Autowired
 	private RuntimeService runtimeService;
-	
+	@Autowired
+	private ManagementService managementService;
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
-		System.out.println("EmptyDelegateForDebugging");
+		
+		errorMethod();
+		
+		try {
+			
+			errorMethod();
+			
+		} catch (Exception e) {
+			execution.setVariable("exceptionVar", "this is the error that happened in delegate ["+ e.getMessage()+"]");
+			
+			
+		}
 		
 
+	}
+
+	private void errorMethod() throws Exception {
+		throw new Exception("error message");
+		
 	}
 
 }

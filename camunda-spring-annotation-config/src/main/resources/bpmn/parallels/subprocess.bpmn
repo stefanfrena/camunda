@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.3.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://activiti.org/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.3.0">
   <bpmn:process id="subprocess" name="Parallel Sub Process" isExecutable="true">
     <bpmn:sequenceFlow id="SequenceFlow_0s0fg8l" sourceRef="Task_0dc92v9" targetRef="ExclusiveGateway_1ltfzpi" />
     <bpmn:sequenceFlow id="SequenceFlow_061fghe" sourceRef="StartEvent_1" targetRef="Task_0dc92v9" />
@@ -26,7 +26,7 @@ execution.setVariable("errorList", errorList);]]></camunda:script>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="SequenceFlow_1p1b7q0" sourceRef="ExclusiveGateway_1ltfzpi" targetRef="ExclusiveGateway_15tshzh" />
     <bpmn:sequenceFlow id="SequenceFlow_171bmuh" sourceRef="ExclusiveGateway_1ltfzpi" targetRef="Task_17lh8od">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${lastname == "Doe"}]]></bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${lastname == "Doex"}]]></bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="ExclusiveGateway_15tshzh">
       <bpmn:incoming>SequenceFlow_1p1b7q0</bpmn:incoming>
@@ -108,10 +108,12 @@ execution.setVariable("errorList", errorList);]]></camunda:script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_02qiuq8_di" bpmnElement="SequenceFlow_02qiuq8">
         <di:waypoint xsi:type="dc:Point" x="766" y="101" />
-        <di:waypoint xsi:type="dc:Point" x="863" y="101" />
+        <di:waypoint xsi:type="dc:Point" x="877" y="101" />
+        <di:waypoint xsi:type="dc:Point" x="877" y="169" />
+        <di:waypoint xsi:type="dc:Point" x="863" y="169" />
         <di:waypoint xsi:type="dc:Point" x="863" y="197" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="815" y="86" width="0" height="0" />
+          <dc:Bounds x="892" y="135" width="0" height="0" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ScriptTask_0ijsuu2_di" bpmnElement="Task_17lh8od">

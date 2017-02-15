@@ -17,8 +17,8 @@ public class SetDtoListToProcessDelegate implements JavaDelegate{
 		
 		List<PersonDto> list = new ArrayList<PersonDto>();
 		list.add(create("Peter", "Meier"));
-//		list.add(create("Stefan", "Huber"));
-//		list.add(create("John", "Doe"));
+		list.add(create("Stefan", "Huber"));
+		list.add(create("John", "Doe"));
 		
 		execution.setVariable("personList", list);
 		
