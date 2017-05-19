@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'war'
+
+repositories {
+	mavenCentral()
+	
+}
+
+dependencies {
+  testCompile 'org.mockito:mockito-all:1.10.19'
+  testCompile 'junit:junit:4.11'
+  testCompile 'org.camunda.bpm.extension:camunda-bpm-assert:1.2'
+  testCompile 'org.camunda.bpm.extension:camunda-bpm-assert-scenario:0.1'
+  testCompile 'org.camunda.consulting.snippets:process-test-coverage:0.2.3'
+  testCompile 'com.h2database:h2:1.4.180'
+
+  providedCompile 'org.camunda.bpm:camunda-engine:7.3.0'
+
+}
