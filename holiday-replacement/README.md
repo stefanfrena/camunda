@@ -1,7 +1,8 @@
 # holiday replacement 
-this is a simple approach to handle holiday replacement using as many camunda ready-to-use utility as possible. Please see my [blogpost](http://blog.frena.de) for further details.
+this is a simple approach to handle holiday replacement using as many camunda ready-to-use utility as possible. Please see my [blogpost](https://blog.frena.de/holiday-replacement-camunda-candidate-groups/) for further details.
 
-picture
+![GitHub Logo](https://blog.frena.de/content/images/2018/03/process.svg)
+
 
 ## run it
 In this project you find a spring boot application. You can run it with `gradle bootRun` from command line.
@@ -13,5 +14,5 @@ In this project you find a spring boot application. You can run it with `gradle 
 5. Complete the task in cockpit. For simplification use user demo, claim the task and complete.
 6. Return back to _camunda admin_. Group and users are gone, since no more task is assigned to either of them.
 
-Feel free to play around and comment on the [post](http://blog.frena.de).
+Feel free to play around and comment on the [post](https://blog.frena.de/holiday-replacement-camunda-candidate-groups/).
 
