@@ -8,6 +8,8 @@ public class MyTaskDto {
 	private String taskId;
 	@JsonProperty("taskName")
 	private String taskName;
+	@JsonProperty("originalAssignee")
+	private String originalAssignee;
 
 	public String getTaskId() {
 		return taskId;
@@ -25,9 +27,20 @@ public class MyTaskDto {
 		this.taskName = taskName;
 	}
 
+	public String getOriginalAssignee() {
+		return originalAssignee;
+	}
+
+	public void setOriginalAssignee(String originalAssignee) {
+		this.originalAssignee = originalAssignee;
+	}
+
 	@Override
 	public String toString() {
-		return "MyTaskDto [taskId=" + taskId + ", taskName=" + taskName + "]";
+		return "MyTaskDto [taskId=" + taskId + ", taskName=" + taskName + ", originalAssignee=" + originalAssignee
+				+ "]";
 	}
+	
+	
 
 }

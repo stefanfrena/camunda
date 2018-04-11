@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.8.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.12.0">
   <bpmn:process id="holidayReplacement" name="Holiday Replacement" isExecutable="true">
     <bpmn:startEvent id="StartEvent_0ifi2er">
       <bpmn:extensionElements>
@@ -10,7 +10,7 @@
       <bpmn:outgoing>SequenceFlow_0wa6j3h</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="SequenceFlow_0wa6j3h" sourceRef="StartEvent_0ifi2er" targetRef="Task_162lovm" />
-    <bpmn:userTask id="Task_SomeTask" name="Coordinator #{userId}&#10;" camunda:candidateGroups="#{candidateGroup_Coordinator}">
+    <bpmn:userTask id="Task_SomeTask" name="approve&#10;" camunda:candidateGroups="#{candidateGroup_Coordinator}">
       <bpmn:incoming>SequenceFlow_084is7k</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1t89wqi</bpmn:outgoing>
     </bpmn:userTask>
@@ -28,11 +28,13 @@
       <bpmn:incoming>SequenceFlow_1t89wqi</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_14lxuec</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:textAnnotation id="TextAnnotation_124kya5">    <bpmn:text>use var candidateGroup_Coordinator</bpmn:text>
-</bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_124kya5">
+      <bpmn:text>use var candidateGroup_Coordinator</bpmn:text>
+    </bpmn:textAnnotation>
     <bpmn:association id="Association_0gi6ikl" sourceRef="Task_SomeTask" targetRef="TextAnnotation_124kya5" />
-    <bpmn:textAnnotation id="TextAnnotation_01hp4zv">    <bpmn:text>use assignee name as group name and add assignee</bpmn:text>
-</bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_01hp4zv">
+      <bpmn:text>use assignee name as group name and add assignee</bpmn:text>
+    </bpmn:textAnnotation>
     <bpmn:association id="Association_1hk2sqs" sourceRef="Task_162lovm" targetRef="TextAnnotation_01hp4zv" />
   </bpmn:process>
   <bpmn:message id="Message_1g3tbmd" name="InitiateJourneyBookingEvent" />
@@ -47,8 +49,8 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0wa6j3h_di" bpmnElement="SequenceFlow_0wa6j3h">
-        <di:waypoint xsi:type="dc:Point" x="235" y="337" />
-        <di:waypoint xsi:type="dc:Point" x="279" y="337" />
+        <di:waypoint x="235" y="337" />
+        <di:waypoint x="279" y="337" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="212" y="316" width="90" height="12" />
         </bpmndi:BPMNLabel>
@@ -63,15 +65,15 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1t89wqi_di" bpmnElement="SequenceFlow_1t89wqi">
-        <di:waypoint xsi:type="dc:Point" x="541" y="337" />
-        <di:waypoint xsi:type="dc:Point" x="636" y="337" />
+        <di:waypoint x="541" y="337" />
+        <di:waypoint x="636" y="337" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="544" y="316" width="90" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_084is7k_di" bpmnElement="SequenceFlow_084is7k">
-        <di:waypoint xsi:type="dc:Point" x="379" y="337" />
-        <di:waypoint xsi:type="dc:Point" x="441" y="337" />
+        <di:waypoint x="379" y="337" />
+        <di:waypoint x="441" y="337" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="365" y="316" width="90" height="12" />
         </bpmndi:BPMNLabel>
@@ -83,12 +85,12 @@
         <dc:Bounds x="531" y="186" width="182" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_0gi6ikl_di" bpmnElement="Association_0gi6ikl">
-        <di:waypoint xsi:type="dc:Point" x="531" y="297" />
-        <di:waypoint xsi:type="dc:Point" x="596" y="236" />
+        <di:waypoint x="531" y="297" />
+        <di:waypoint x="596" y="236" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_14lxuec_di" bpmnElement="SequenceFlow_14lxuec">
-        <di:waypoint xsi:type="dc:Point" x="736" y="337" />
-        <di:waypoint xsi:type="dc:Point" x="785" y="337" />
+        <di:waypoint x="736" y="337" />
+        <di:waypoint x="785" y="337" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="715.5" y="316" width="90" height="12" />
         </bpmndi:BPMNLabel>
@@ -100,8 +102,8 @@
         <dc:Bounds x="329" y="160" width="115" height="75" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_1hk2sqs_di" bpmnElement="Association_1hk2sqs">
-        <di:waypoint xsi:type="dc:Point" x="346" y="297" />
-        <di:waypoint xsi:type="dc:Point" x="372" y="235" />
+        <di:waypoint x="346" y="297" />
+        <di:waypoint x="372" y="235" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
