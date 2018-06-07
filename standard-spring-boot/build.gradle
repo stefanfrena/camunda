@@ -1,0 +1,33 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'org.springframework.boot'
+
+buildscript {
+	ext {
+		springBootVersion = '2.0.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile (group: 'org.camunda.bpm.springboot', name: 'camunda-bpm-spring-boot-starter', version: '3.0.0'){
+		exclude module: 'spring-tx'
+	}
+	
+	compile group: 'org.springframework', name: 'spring-tx', version: '5.0.6.RELEASE'
+	
+	compile group: 'org.camunda.bpm.springboot', name: 'camunda-bpm-spring-boot-starter-webapp', version: '3.0.0'
+	compile group: 'org.camunda.bpm.springboot', name: 'camunda-bpm-spring-boot-starter-rest', version: '3.0.0'
+	
+	compile group: 'com.h2database', name: 'h2', version: '1.4.196'
+}
