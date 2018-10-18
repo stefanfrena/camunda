@@ -1,0 +1,27 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+
+	repositories {
+		mavenCentral()
+	}
+	
+	dependencies {
+		
+		
+		compile group: 'com.h2database', name: 'h2', version: '1.4.196'
+		testCompile "junit:junit:4.11"
+
+
+		testCompile group: 'org.camunda.bpm.extension', name: 'camunda-bpm-assert-scenario', version: '0.2'
+		testCompile group: 'org.camunda.bpm', name: 'camunda-engine', version: '7.9.0'
+		testCompile "org.camunda.consulting.snippets:process-test-coverage:0.2.3"
+		
+		testCompile "org.mockito:mockito-all:1.10.19"
+		testCompile "org.camunda.bpm.extension:camunda-bpm-assert:1.2"
+		testCompile("org.camunda.bpm.extension:camunda-bpm-mockito:1.0") {
+        exclude group: "javax", module: "javaee-api"
+    }
+
+	
+	}
