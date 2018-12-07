@@ -1,4 +1,4 @@
-# ready-to-use camunda 7.9 spring boot project with gradle  
+# ready-to-use camunda 7.10 spring boot project with gradle  
 Please see my [blogpost](https://blog.frena.de/camunda-7-9-spring-boot-gradle/) for further details.
 
 ![Logo](https://blog.frena.de/content/images/2018/06/process.svg)
