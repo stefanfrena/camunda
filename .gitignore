@@ -1,3 +1,7 @@
 *.iml
 standard-spring-boot/.idea/
 standard-spring-boot/out/
+tenants/.classpath
+tenants/.project
+tenants/.settings/*
+tenants/target/classes/*
