@@ -5,3 +5,4 @@ tenants/.classpath
 tenants/.project
 tenants/.settings/*
 tenants/target/classes/*
+tenants/camunda-h2-database.mv.db
