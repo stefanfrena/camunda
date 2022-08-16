@@ -12,6 +12,20 @@ Created with [Camunda Platform Initializr](https://start.camunda.com/)
 Start the application and check [h2-console](http://localhost:8080/h2-console/), no user or pw needed.
 In ACT_HI_PROCINST, TENANT_ID_ will be "stefan".
 
+# Tenants in non-shared process definitions
+
+just pass the tenant id during deployment.
+
+```java
+repositoryService
+  .createDeployment()
+  .tenantId("stefan")
+  .addZipInputStream(inputStream)
+  .deploy()
+```
+
+https://github.com/camunda/camunda-docs-manual/blob/master/content/user-guide/process-engine/multi-tenancy.md
+
 #### sources:
 
 [Topic in Camunda Forum](https://forum.camunda.org/t/can-two-tenants-share-same-processdefinition-without-tenant-identifier-where-process-instance-is-tenant-specific-with-tenant-identifier/7764/2)
