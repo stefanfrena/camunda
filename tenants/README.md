@@ -1,16 +1,16 @@
 # Tenants in shared process definitions
 
-This prototype starts instances for a tenant "stefan".
+This prototype starts instances for a tenant "ICP".
 The process definitions are shared, not deployed for a specifict tenant.
 
-To set the tenant, we make use of a process variable "tenantId". 
+To set the tenant, we make use of a process variable "dataset". 
 Using a [CustomTenantProvider](./src/main/java/de/frena/CustomTenantProvider.java) this variable will be used as tenant. 
 It is removed in the process right after start to demostrate, that it isnt needed afterwards.
 
 Created with [Camunda Platform Initializr](https://start.camunda.com/)
 
 Start the application and check [h2-console](http://localhost:8080/h2-console/), no user or pw needed.
-In ACT_HI_PROCINST, TENANT_ID_ will be "stefan".
+In ACT_HI_PROCINST, TENANT_ID_ will be "ICP".
 
 # Tenants in non-shared process definitions
 
@@ -19,7 +19,7 @@ just pass the tenant id during deployment.
 ```java
 repositoryService
   .createDeployment()
-  .tenantId("stefan")
+  .tenantId("ICP")
   .addZipInputStream(inputStream)
   .deploy()
 ```

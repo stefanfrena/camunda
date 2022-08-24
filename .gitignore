@@ -4,5 +4,7 @@ standard-spring-boot/out/
 tenants/.classpath
 tenants/.project
 tenants/.settings/*
-tenants/target/classes/*
+tenants/target/*
 tenants/camunda-h2-database.mv.db
+tenants/target/maven-archiver/pom.properties
+tenants/.vscode/settings.json
